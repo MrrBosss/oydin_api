@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party api services
+    'django_filters',
     'corsheaders',
     'drf_spectacular',
     #third party packages
@@ -147,3 +148,14 @@ REST_FRAMEWORK = {
     # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 
 }
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Derek API',
+    'DESCRIPTION': 'Derek project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SCHEMA_PATH_PREFIX': '/api/v1/',
+    # OTHER SETTINGS
+}
+
+MEDIA_ROOT = "media/"

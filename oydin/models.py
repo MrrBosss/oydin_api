@@ -4,5 +4,10 @@ from django.db import models
 
 
 class Product(models.Model):
-    product = models.CharField(max_length=250, null=True)
+    product = models.CharField(max_length=100, null=True)
+    name = models.CharField(max_length=100, null=True)
+    image = models.ImageField(upload_to='images')
+    brand_image = models.ImageField(upload_to='brand_images')
+    
+
 
