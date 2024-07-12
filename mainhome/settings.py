@@ -150,8 +150,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Derek API',
-    'DESCRIPTION': 'Derek project description',
+    'TITLE': 'Oydin API',
+    'DESCRIPTION': 'Oydin project description',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'SCHEMA_PATH_PREFIX': '/api/v1/',
