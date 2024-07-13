@@ -45,6 +45,7 @@ class Product(models.Model):
     dop_field_value = models.CharField(max_length=50, verbose_name="2.Qo'shimcha xarakteristika qiymati", null=True, blank=True)
    
     def __str__(self):
+        
         return self.name
 
 
