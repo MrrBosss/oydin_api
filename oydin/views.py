@@ -17,7 +17,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
     http_method_names = ['get'] 
     pagination_class = None

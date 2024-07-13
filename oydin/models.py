@@ -16,6 +16,10 @@ class Category(models.Model):
     name = models.CharField(max_length=100, null=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)
 
+    def __str__(self):
+        return self.name
+
+
 
 def upload_to(instance, filename):
     # Generate filename here
@@ -33,6 +37,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to=upload_to, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
