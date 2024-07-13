@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-613_yiwl3*s3ph6ulmg@$j4wl!8lnf4)k)1^@-99n4+-0pf#vq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # React development server
+    "https://localhost:8000",  # production domain
+    # Add more origins as needed, or use '*' to allow any origin
+]
 
 
 # Application definition
@@ -52,6 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
