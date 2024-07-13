@@ -1,12 +1,23 @@
 from django.shortcuts import render
 from rest_framework import generics, viewsets, mixins
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework import filters
 
 from .models import Product, Brand, ProductShots, Category
 from .serializers import ProductSerializer, BrandSerializer, ProductShotsSerilaizer, CategorySerializer
 from .filters import ProductFilter
 # Create your views here.
+
+from rest_framework import filters
+
+class ProductListView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
+    http_method_names = ['get']
+
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
