@@ -34,6 +34,7 @@ def upload_to(instance, filename):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, null=True)
+    description = models.CharField(max_length=500, null=True)
     image = models.ImageField(upload_to=upload_to, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)
