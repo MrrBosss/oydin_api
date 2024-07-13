@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -160,3 +161,10 @@ SPECTACULAR_SETTINGS = {
 
 MEDIA_ROOT = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('uz', gettext('Uzbek')),
+    ('en', gettext('English')),
+    ('ru', gettext('Russian')),
+)
