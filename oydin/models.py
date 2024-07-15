@@ -34,11 +34,14 @@ def upload_to(instance, filename):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, null=True)
+    image = models.ImageField(upload_to=upload_to, blank=True) 
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True) 
     description = models.CharField(max_length=500, null=True)
-    image = models.ImageField(upload_to=upload_to, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    characteristic1 = models.CharField(max_length=50,verbose_name='1.Xarakteristika', null=True)
+    characteristic2 = models.CharField(max_length=50,verbose_name='2.Xarakteristika', null=True)
+    characteristic3 = models.CharField(max_length=50,verbose_name='3.Xarakteristika', null=True)
     extra_field_label = models.CharField(max_length=50, verbose_name="1.Qo'shimcha xarakteristika nomi", null=True, blank=True)
     extra_field_value = models.CharField(max_length=50, verbose_name="1.Qo'shimcha xarakteristika qiymati", null=True, blank=True)
     dop_field_label = models.CharField(max_length=50, verbose_name="2.Qo'shimcha xarakteristika nomi", null=True, blank=True)
@@ -51,7 +54,8 @@ class Product(models.Model):
 
 class ProductShots(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_shots')
-    image = models.ImageField(upload_to='product_shots/')
+    image = models.ImageField(upload_to=upload_to, blank=True) 
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f"Shot for {self.product.name}"
