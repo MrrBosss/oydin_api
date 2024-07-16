@@ -2,11 +2,12 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path
 
 from oydin.views import BrandViewSet, ProductShotsViewSet, CategoryViewSet, ProductListView, \
-    ProductDetailView
+    ProductDetailView, CharacteristicViewSet
 
 
 
 router = DefaultRouter()
+router.register('characteristics', CharacteristicViewSet, basename='characteristics')
 router.register('brands', BrandViewSet, basename='brands')
 router.register('categories', CategoryViewSet, basename='categories')
 router.register('product-shots', ProductShotsViewSet, basename='product-shots')

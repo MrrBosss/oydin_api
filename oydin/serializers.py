@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Brand, ProductShots, Category
+from .models import Product, Brand, ProductShots, Category, Characteristic
 
 
 
@@ -7,6 +7,7 @@ class ProductShotsSerilaizer(serializers.ModelSerializer):
     class Meta:
         model = ProductShots
         fields = '__all__'
+
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,11 +21,11 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
         fields = '__all__'
-
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -33,3 +34,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CharacteristicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Characteristic
+        fields = ['name','value']

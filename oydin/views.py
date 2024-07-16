@@ -3,9 +3,9 @@ from rest_framework import generics, viewsets, mixins
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
-from .models import Product, Brand, ProductShots, Category
+from .models import Product, Brand, ProductShots, Category, Characteristic
 from .serializers import ProductSerializer, BrandSerializer, ProductShotsSerilaizer, CategorySerializer, \
-     ProductDetailSerializer
+     ProductDetailSerializer, CharacteristicSerializer
 from .filters import ProductFilter
 # Create your views here.
 
@@ -19,10 +19,10 @@ class ProductListView(generics.ListAPIView):
     filterset_class = ProductFilter
 
 
-
 class ProductDetailView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductDetailSerializer
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -42,4 +42,11 @@ class BrandViewSet(viewsets.ModelViewSet):
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
     http_method_names = ['get'] 
+    pagination_class = None
+
+
+class CharacteristicViewSet(viewsets.ModelViewSet):
+    queryset = Characteristic.objects.all()
+    serializer_class = CharacteristicSerializer
+    http_method_names = ['get']
     pagination_class = None
