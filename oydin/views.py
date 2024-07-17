@@ -14,7 +14,7 @@ class ProductListView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
-    search_fields = ['name_uz']
+    search_fields = ['name_uz', 'name_ru', 'name_en']
     filterset_class = ProductFilter
 
 

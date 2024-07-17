@@ -9,6 +9,12 @@ class ProductShotsSerilaizer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CharacteristicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Characteristic
+        fields = ['name','value']
+
+
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
@@ -17,6 +23,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class ProductDetailSerializer(serializers.ModelSerializer):
     product_shots = ProductShotsSerilaizer(many=True)
+    characteristics = CharacteristicSerializer(many=True)
     class Meta:
         model = Product
         fields = '__all__'
@@ -32,9 +39,3 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
-
-
-class CharacteristicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Characteristic
-        fields = ['name','value']
