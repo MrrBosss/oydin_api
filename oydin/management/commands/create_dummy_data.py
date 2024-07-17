@@ -78,12 +78,16 @@ class Command(BaseCommand):
         for _ in range(3):  # Create 3 characteristics per product
             Characteristic.objects.create(
                 product=product,
-                name=fake.word(),
-                value=fake.word()
+                name=fake_uz.text(),
+                name_en=fake.text(),
+                name_ru=fake_ru.text(),
+                value=fake_uz.word(),
+                value_en=fake.text(),
+                value_ru=fake_ru.text()
             )
 
     def get_product_shot_image(self):
-        access_key = 'NNpH9MjyQNMfmuBxreAQmnSjzb2cCJk9nWCGFfd7M2M'  # Replace with your Unsplash access key
+        access_key = ''  # Replace with your Unsplash access key
         url = f'https://api.unsplash.com/photos/random?query=product&orientation=landscape'
         headers = {
             'Accept-Version': 'v1',
