@@ -9,7 +9,6 @@ from .serializers import ProductSerializer, BrandSerializer, ProductShotsSerilai
 from .filters import ProductFilter
 # Create your views here.
 
-from rest_framework import filters
 
 class ProductListView(generics.ListAPIView):
     queryset = Product.objects.all()
