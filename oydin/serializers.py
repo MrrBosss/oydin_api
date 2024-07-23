@@ -12,7 +12,7 @@ class ProductShotsSerilaizer(serializers.ModelSerializer):
 class CharacteristicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Characteristic
-        fields = ['name','value']
+        fields = ['id','product','name','value']
 
 
 class ProductSerializer(serializers.ModelSerializer):
