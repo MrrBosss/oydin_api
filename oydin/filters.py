@@ -1,13 +1,13 @@
 import django_filters
-from .models import Product
+from .models import Product, Brand, Category
 
 
 
 class ProductFilter(django_filters.FilterSet):
     # Define filters for brand name and category
-    brand__name = django_filters.CharFilter(field_name='brand__name', lookup_expr='icontains')
-    category__name = django_filters.CharFilter(field_name='category__name', lookup_expr='icontains')
+    brand = django_filters.ModelMultipleChoiceFilter(field_name='brand', queryset=Brand.objects.all())
+    category = django_filters.ModelMultipleChoiceFilter(field_name='category', queryset=Category.objects.all())
 
     class Meta:
         model = Product
-        fields = ['brand__name', 'category__name']
+        fields = ['brand', 'category']
