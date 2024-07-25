@@ -54,4 +54,4 @@ class CharacteristicViewSet(viewsets.ModelViewSet):
 class OrderView(generics.CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    # http_method_names = ['post']
+    http_method_names = ['post']
