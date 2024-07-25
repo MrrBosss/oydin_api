@@ -31,7 +31,7 @@ class CharacteristicInline(TranslationTabularInline):
 
 @admin.register(Product)
 class ProductAdmin(TabbedTranslationAdmin):
-    list_display = ['name_uz','photo', 'brand','id']
+    list_display = ['name_uz', 'photo', 'brand','id']
     search_fields = ['name_uz']
     list_display_links =  ['name_uz', 'photo']
     # group_fieldsets = True
