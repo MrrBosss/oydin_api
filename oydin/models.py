@@ -85,13 +85,13 @@ class Order(models.Model):
     name = models.CharField(max_length=100, null=True)
     phone_number = models.CharField(max_length=20, null=True)
     email = models.EmailField(null=True,blank=True)
+    message = models.TextField(null=True,blank=True)
     # Add other fields like customer information, shipping details, etc.
 
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.product.name)

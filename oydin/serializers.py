@@ -18,7 +18,7 @@ class CharacteristicSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["pk", "name_uz", "name_ru", "name_en", "image", "category", "brand"]
+        fields = ["id", "name_uz", "name_ru", "name_en", "image", "category", "brand"]
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -44,7 +44,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
-        fields = ['id', 'product', 'quantity']
+        fields = ['id', 'product']
 
 
 
@@ -53,7 +53,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'order_date', 'name', 'phone_number', 'email','items']
+        fields = ['id', 'order_date', 'name', 'phone_number', 'email','message','items']
 
     def validate_items(self, value):
         if not value:
