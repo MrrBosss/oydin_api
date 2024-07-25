@@ -1,7 +1,23 @@
 from django.contrib import admin
-from .models import Product, Brand, Category,  Characteristic, ProductShots
+from .models import Product, Brand, Category,  Characteristic, ProductShots, Order, OrderItem
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationTabularInline
 from django.utils.safestring import mark_safe
+
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'order_date', 'get_total_quantity']
+    inlines = [OrderItemInline]
+
+    def get_total_quantity(self, obj):
+        return sum(item.quantity for item in obj.items.all())
+
+    get_total_quantity.short_description = 'Total Quantity'
 
 
 class ProductShotsInline(admin.TabularInline):
