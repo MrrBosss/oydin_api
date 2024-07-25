@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Product, Brand, ProductShots, Category, Characteristic, Order, OrderItem
 
 
-
 class ProductShotsSerilaizer(serializers.ModelSerializer):
     class Meta:
         model = ProductShots
@@ -18,7 +17,7 @@ class CharacteristicSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ["id", "name_uz", "name_ru", "name_en", "image", "category", "brand"]
+        fields = ["id", "name_uz", "name_ru", "name_en", "image", "category", "created_at", "brand"]
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
@@ -45,7 +44,6 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ['id', 'product']
-
 
 
 class OrderSerializer(serializers.ModelSerializer):
