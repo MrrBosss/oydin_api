@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+from .validators import validate_name, validate_phone_number
 # Create your models here.
 
 
@@ -82,8 +83,8 @@ class ProductShots(models.Model):
 
 class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True, null=True)
-    name = models.CharField(max_length=100, null=True)
-    phone_number = models.CharField(max_length=20, null=True)
+    name = models.CharField(max_length=100, null=True, validators=[validate_name])
+    phone_number = models.CharField(max_length=20, null=True, validators=[validate_phone_number])
     email = models.EmailField(null=True,blank=True)
     message = models.TextField(null=True,blank=True)
     # Add other fields like customer information, shipping details, etc.
