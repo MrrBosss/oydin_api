@@ -41,8 +41,8 @@ def upload_to(instance, filename):
 
 class Characteristic(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='characteristics')
-    name = models.CharField(max_length=50, verbose_name='Xarakteristika nomi')
-    value = models.CharField(max_length=50, verbose_name='Xarakteristika qiymati')
+    name = models.CharField(max_length=50, verbose_name='Xarakteristika nomi',null=True,blank=True)
+    value = models.CharField(max_length=50, verbose_name='Xarakteristika qiymati',null=True,blank=True)
 
     def __str__(self):
         return f"{self.name}: {self.value}"
