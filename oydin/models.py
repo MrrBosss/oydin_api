@@ -43,6 +43,8 @@ class Characteristic(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='characteristics')
     name = models.CharField(max_length=50, verbose_name='Xarakteristika nomi',null=True,blank=True)
     value = models.CharField(max_length=50, verbose_name='Xarakteristika qiymati',null=True,blank=True)
+    name = models.CharField(max_length=50, verbose_name='Xarakteristika nomi',null=True,blank=True)
+    value = models.CharField(max_length=50, verbose_name='Xarakteristika qiymati',null=True,blank=True)
 
     def __str__(self):
         return f"{self.name}: {self.value}"
@@ -53,10 +55,10 @@ class Characteristic(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100, null=True)
+    name = models.CharField(max_length=100,null=True,blank=True )
     image = models.ImageField(upload_to=upload_to, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
-    description = models.CharField(max_length=500, null=True)
+    description = models.CharField(max_length=500, null=True,blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -96,6 +98,7 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return str(self.product.name)
+
     
 
 class News(models.Model):
