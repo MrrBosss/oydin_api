@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Brand, Category,  Characteristic, ProductShots, Order, OrderItem
+from .models import Product, Brand, Category,  Characteristic, ProductShots, Order, OrderItem, News
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationTabularInline
 from django.utils.safestring import mark_safe
 
@@ -56,3 +56,8 @@ class CategoryAdmin(TabbedTranslationAdmin):
 class BrandAdmin(admin.ModelAdmin):
     list_display = ['name','id']
     search_fields = ['name']
+
+@admin.register(News)
+class NewsAdmin(TabbedTranslationAdmin):
+    list_display = ['name_uz']
+    search_fields = ["name_uz"]

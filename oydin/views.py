@@ -3,9 +3,9 @@ from rest_framework import generics, viewsets, mixins
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
-from .models import Product, Brand, ProductShots, Category, Characteristic, Order
+from .models import Product, Brand, ProductShots, Category, Characteristic, Order, News
 from .serializers import ProductSerializer, BrandSerializer, ProductShotsSerilaizer, CategorySerializer, \
-     ProductDetailSerializer, CharacteristicSerializer, OrderSerializer
+     ProductDetailSerializer, CharacteristicSerializer, OrderSerializer, NewsSerializer
 from .filters import ProductFilter
 # Create your views here.
 
@@ -29,6 +29,12 @@ class CategoryViewSet(viewsets.ModelViewSet):
     http_method_names = ['get'] 
     pagination_class = None
 
+
+class NewsViewSet(viewsets.ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    http_method_names = ['get']
+    pagination_class = None
 
 class ProductShotsViewSet(viewsets.ModelViewSet):
     queryset = ProductShots.objects.all()
