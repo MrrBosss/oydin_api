@@ -91,6 +91,10 @@ class Order(models.Model):
     message = models.TextField(null=True,blank=True)
     # Add other fields like customer information, shipping details, etc.
 
+    class Meta:
+        verbose_name = "Buyurtma"
+        verbose_name_plural = "Buyurtmalar"
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
@@ -99,7 +103,10 @@ class OrderItem(models.Model):
     def __str__(self):
         return str(self.product.name)
 
-    
+    class Meta:
+        verbose_name = "Buyurtma"
+        verbose_name_plural = "Buyurtmalar"
+        
 
 class News(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
