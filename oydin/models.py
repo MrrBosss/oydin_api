@@ -63,7 +63,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.name_uz
+        return self.name_uz or "Unnamed Product"
     
     class Meta:
         verbose_name = "Maxsulot"
@@ -91,6 +91,10 @@ class Order(models.Model):
     message = models.TextField(null=True,blank=True)
     # Add other fields like customer information, shipping details, etc.
 
+    def __str__(self):
+        return f"Order #{self.id} - {self.name or 'No Name'}"
+    
+
     class Meta:
         verbose_name = "Buyurtma"
         verbose_name_plural = "Buyurtmalar"
@@ -101,7 +105,9 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.product.name)
+        if self.product and self.product.name:
+            return str(self.product.name)
+        return "Unnamed Product"
 
     class Meta:
         verbose_name = "Buyurtma"
