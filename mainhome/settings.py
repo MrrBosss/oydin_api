@@ -173,6 +173,7 @@ LANGUAGES = (
     ('uz', gettext('Uzbek')),
     ('en', gettext('English')),
     ('ru', gettext('Russian')),
+    ('fr', gettext('French')),
 )
 
 
