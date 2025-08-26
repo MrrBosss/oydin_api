@@ -203,7 +203,7 @@ JAZZMIN_SETTINGS = {
     "site_icon": None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the library",
+    "welcome_sign": "Welcome to 'OYDIN' Adminstration site",
 
     # Copyright on the footer
     "copyright": "OYDIN ElectronicsLtd",
